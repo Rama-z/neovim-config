@@ -32,6 +32,7 @@ require('lazy').setup {
   require 'plugins.supermaven',
   require 'plugins.autoformatting',
   require 'plugins.indent-blankline',
+  require 'plugins.toggleterm',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
