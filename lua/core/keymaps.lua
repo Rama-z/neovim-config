@@ -21,7 +21,7 @@ vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
 vim.keymap.set('n', 'x', '"_x', opts)
 
 -- Vertical scroll and center
-vim.keymap.set('n', '<C-d>', '<C-d>zz', opts)
+vim.keymap.set('n', '<C-y>', '<C-d>zz', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
 -- Find and center
@@ -82,5 +82,6 @@ vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true }) 
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) -- Alt + Down
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true }) -- Alt + Up
 
--- terminal mode
-vim.api.nvim_set_keymap('n', '<leader>te', ':terminal<CR>', { noremap = true, silent = true })
+-- Disable Ctrl + z
+vim.keymap.set('n', '<C-z>', '<Nop>', opts)
+vim.keymap.set('v', '<C-z>', '<Nop>', opts)

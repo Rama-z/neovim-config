@@ -170,14 +170,14 @@ return {
         highlight = {
           enable = true,
         },
-        autotag = {
-          enable = true,
-        },
+        -- autotag = {
+        --   enable = true,
+        -- },
         indent = {
           enable = true,
         },
       }
-      require('nvim-ts-autotag').setup()
+      require('nvim-ts-autotag').setup {}
 
       -- Configure nvim-cmp
       cmp.setup {
