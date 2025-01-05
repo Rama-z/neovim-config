@@ -1,4 +1,14 @@
-<!-- List of buttons -->
+# Documentation of My Neovim Config
+
+Neovim is a text editor that is highly configurable. This is my configuration for Neovim.
+I learn this for my own use, but I hope it can be useful to others.
+And i learn neovim as an investment.
+
+> **_Notice_**
+>
+> DO WITH YOUR OWN RISK
+>
+> I am not responsible for any damage that may occur.
 
 ## 📦 Plugins
 
