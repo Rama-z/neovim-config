@@ -82,6 +82,14 @@ vim.keymap.set('n', '<A-k>', ':m .-2<CR>==', { noremap = true, silent = true }) 
 vim.keymap.set('v', '<A-j>', ":m '>+1<CR>gv=gv", { noremap = true, silent = true }) -- Alt + Down
 vim.keymap.set('v', '<A-k>', ":m '<-2<CR>gv=gv", { noremap = true, silent = true }) -- Alt + Up
 
+-- Disabled Buttons
 -- Disable Ctrl + z
 vim.keymap.set('n', '<C-z>', '<Nop>', opts)
 vim.keymap.set('v', '<C-z>', '<Nop>', opts)
+
+-- Disable Ctrl + d
+vim.keymap.set('n', '<C-d>', '<Nop>', opts)
+
+-- Disable Ctrl + p & Ctrl + n
+vim.keymap.set('n', '<C-p>', '<Nop>', opts)
+vim.keymap.set('n', '<C-n>', '<Nop>', opts)
