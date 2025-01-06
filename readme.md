@@ -133,9 +133,9 @@ And i learn neovim as an investment.
 - ctrl + k: No command.
 - ctrl + l: Move to the right of the window.
 - ctrl + m: Default command.
-- ctrl + n:
+- ctrl + n: Open a terminal in the current directory.
 - ctrl + o: Default command. (To go back to where you came)
-- ctrl + p: Default command.
+- ctrl + p:
 - ctrl + q:
 - ctrl + r:
 - ctrl + s:
