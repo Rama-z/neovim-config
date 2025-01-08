@@ -15,30 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  -- require 'plugins.neotree',
-  -- require 'plugins.colortheme',
-  -- require 'plugins.bufferline',
-  -- require 'plugins.lualine',
-  -- require 'plugins.treesitter',
-  -- require 'plugins.telescope',
-  -- -- require 'plugins.lsp',
-  -- require 'plugins.main-lsp',
-  -- require 'plugins.autocompletion',
-  -- require 'plugins.none-ls',
-  -- require 'plugins.gitsigns',
-  -- require 'plugins.alpha',
-  -- require 'plugins.misc',
-  -- require 'plugins.comment',
-  -- -- require 'plugins.prettier',
-  -- require 'plugins.supermaven',
-  -- require 'plugins.autoformatting',
-  -- require 'plugins.indent-blankline',
-  -- require 'plugins.toggleterm',
-
-  -- require 'core.options'
-  -- require 'core.keymaps'
-  -- require 'core.snippets'
-  --
   require 'plugins.neotree',
   require 'plugins.colortheme',
   require 'plugins.bufferline',
