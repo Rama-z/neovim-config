@@ -3,7 +3,8 @@ return {
   'neovim/nvim-lspconfig',
   dependencies = {
     -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
+    -- NOTE: Must be loaded before dependants
+    { 'williamboman/mason.nvim', config = true },
     'williamboman/mason-lspconfig.nvim',
     'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -13,6 +14,30 @@ return {
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
+
+    -- For formatting and linting
+    'jose-elias-alvarez/null-ls.nvim',
+
+    -- Syntax highlighting
+    'nvim-treesitter/nvim-treesitter',
+
+    -- Snippets engine
+    'L3MON4D3/LuaSnip',
+
+    -- Autocompletion
+    'hrsh7th/nvim-cmp',
+
+    -- Snippets source for nvim-cmp
+    'saadparwaiz1/cmp_luasnip',
+
+    -- Auto close and rename tags
+    'windwp/nvim-ts-autotag',
+
+    -- Collection of snippets
+    'rafamadriz/friendly-snippets',
+
+    -- VSCode-like pictograms
+    'onsails/lspkind.nvim',
   },
   config = function()
     -- Brief aside: **What is LSP?**
@@ -25,7 +50,7 @@ return {
     -- In general, you have a "server" which is some tool built to understand a particular
     -- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
     -- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-    -- processes that communicate with some "client" - in this case, Neovim!
+    -- processes that communicate with some "client" - in this case, Neovim!definition
     --
     -- LSP provides Neovim with features like:
     --  - Go to definition
@@ -184,7 +209,7 @@ return {
       },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       cssls = {},
-      tailwindcss = {},
+      -- tailwindcss = {},
       dockerls = {},
       sqlls = {},
       terraformls = {},

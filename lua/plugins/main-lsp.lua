@@ -2,38 +2,67 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'hrsh7th/cmp-nvim-lsp',            -- LSP source for nvim-cmp
+      -- LSP Manager
+      { 'williamboman/mason.nvim', config = true },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      'jose-elias-alvarez/null-ls.nvim', -- For formatting and linting
+      -- LSP Features
+      { 'j-hui/fidget.nvim',       opts = {} }, -- Status updates
+      'hrsh7th/cmp-nvim-lsp',                   -- Autocompletion source
+      'jose-elias-alvarez/null-ls.nvim',        -- Formatting and linting
+
+      -- Additional Plugins
       'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
       'L3MON4D3/LuaSnip',                -- Snippets engine
       'hrsh7th/nvim-cmp',                -- Autocompletion
-      'saadparwaiz1/cmp_luasnip',        -- Snippets source for nvim-cmp
-      'windwp/nvim-ts-autotag',          -- Auto close and rename tags
-      'rafamadriz/friendly-snippets',    -- Collection of snippets
+      'saadparwaiz1/cmp_luasnip',        -- Snippets source
+      'windwp/nvim-ts-autotag',          -- Auto close tags
+      'rafamadriz/friendly-snippets',    -- Snippets collection
       'onsails/lspkind.nvim',            -- VSCode-like pictograms
     },
     config = function()
       local lspconfig = require 'lspconfig'
+      local mason = require 'mason'
+      local mason_lspconfig = require 'mason-lspconfig'
       local null_ls = require 'null-ls'
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       local lspkind = require 'lspkind'
+      local cmp_nvim_lsp = require 'cmp_nvim_lsp'
 
-      -- Load friendly-snippets
-      require('luasnip.loaders.from_vscode').lazy_load()
+      -- Configure Mason
+      mason.setup()
+      mason_lspconfig.setup()
 
-      -- Common on_attach function for LSP servers
+      -- Default Capabilities
+      local capabilities = cmp_nvim_lsp.default_capabilities()
+
+      -- Common on_attach Function
       local on_attach = function(client, bufnr)
-        -- local buf_map = function(mode, lhs, rhs)
-        --   vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, { noremap = true, silent = true })
-        -- end
-        -- Keybindings
-        buf_map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>')
-        buf_map('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
-        buf_map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>')
-        buf_map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format()<CR>')
+        local map = function(keys, func, desc)
+          vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+        end
 
+        -- Keybindings
+        map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+        map('K', vim.lsp.buf.hover, 'Hover Documentation')
+        map('<leader>f', function()
+          vim.lsp.buf.format { async = true }
+        end, 'Format Code')
+
+        -- Highlight References
+        if client.supports_method 'textDocument/documentHighlight' then
+          vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+          })
+          vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+          })
+        end
         -- Set up formatting on save
         if client.supports_method 'textDocument/formatting' then
           vim.api.nvim_clear_autocmds { group = 'LspFormatting', buffer = bufnr }
@@ -53,7 +82,7 @@ return {
       -- Configure CSS LSP
       lspconfig.cssls.setup {
         on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = capabilities,
         settings = {
           css = { validate = true },
           scss = { validate = true },
@@ -64,7 +93,7 @@ return {
       -- Configure Tailwind LSP
       lspconfig.tailwindcss.setup {
         on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = capabilities,
         settings = {
           tailwindCSS = {
             experimental = {
@@ -124,18 +153,46 @@ return {
       }
 
       -- Configure Lua LSP
+      -- lspconfig.lua_ls.setup {
+      --   on_attach = on_attach,
+      --   capabilities = capabilities,
+      --   settings = {
+      --     Lua = {
+      --       diagnostics = { globals = { 'vim' } },
+      --       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
+      --     },
+      --   },
+      -- }
+
+
       lspconfig.lua_ls.setup {
         on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').default_capabilities(),
+        capabilities = capabilities,
         settings = {
           Lua = {
-            diagnostics = {
-              globals = { 'vim' },
+            completion = {
+              callSnippet = 'Replace',
             },
+            runtime = {
+              version = 'LuaJIT',
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                '${3rd}/luv/library',
+                unpack(vim.api.nvim_get_runtime_file('', true)),
+              },
+            },
+            diagnostics = {
+              disable = { 'missing-fields' },
+              globals = { 'vim' }, -- Menambahkan "globals" seperti dalam konfigurasi sebelumnya
+            },
+            -- format = {
+            --   enable = false,
+            -- },
           },
         },
       }
-
       -- Configure null-ls
       null_ls.setup {
         sources = {
