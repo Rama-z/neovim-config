@@ -15,30 +15,49 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Set up plugins
 require('lazy').setup {
-  -- Thing i fully understand
-  require 'plugins.gitsigns',
-  require 'plugins.main-lsp',
-  require 'plugins.supermaven',
+  -- require 'plugins.neotree',
+  -- require 'plugins.colortheme',
+  -- require 'plugins.bufferline',
+  -- require 'plugins.lualine',
+  -- require 'plugins.treesitter',
+  -- require 'plugins.telescope',
+  -- -- require 'plugins.lsp',
+  -- require 'plugins.main-lsp',
+  -- require 'plugins.autocompletion',
+  -- require 'plugins.none-ls',
+  -- require 'plugins.gitsigns',
+  -- require 'plugins.alpha',
+  -- require 'plugins.misc',
+  -- require 'plugins.comment',
+  -- -- require 'plugins.prettier',
+  -- require 'plugins.supermaven',
+  -- require 'plugins.autoformatting',
+  -- require 'plugins.indent-blankline',
+  -- require 'plugins.toggleterm',
 
-  -- Thing i don't really understand
+  -- require 'core.options'
+  -- require 'core.keymaps'
+  -- require 'core.snippets'
+  --
   require 'plugins.neotree',
   require 'plugins.colortheme',
   require 'plugins.bufferline',
   require 'plugins.lualine',
   require 'plugins.treesitter',
   require 'plugins.telescope',
+
+  require 'plugins.main-lsp', -- LSP dimuat sebelum autocompletion
   require 'plugins.autocompletion',
   require 'plugins.none-ls',
-  require 'plugins.alpha',
-  require 'plugins.misc',
-  require 'plugins.comment',
+  require 'plugins.supermaven',
+
   require 'plugins.autoformatting',
   require 'plugins.indent-blankline',
   require 'plugins.toggleterm',
-
-  -- Unused plugins
-  -- require 'plugins.lsp',
-  -- require 'plugins.prettier',
+  require 'plugins.gitsigns',
+  require 'plugins.alpha',
+  require 'plugins.comment',
+  require 'plugins.misc',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
