@@ -9,8 +9,8 @@ return {
 
       -- LSP Features
       { 'j-hui/fidget.nvim',       opts = {} }, -- Status updates
-      'hrsh7th/cmp-nvim-lsp',                   -- Autocompletion source
-      'jose-elias-alvarez/null-ls.nvim',        -- Formatting and linting
+      'hrsh7th/cmp-nvim-lsp',             -- Autocompletion source
+      'jose-elias-alvarez/null-ls.nvim',  -- Formatting and linting
 
       -- Additional Plugins
       'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
@@ -153,18 +153,6 @@ return {
       }
 
       -- Configure Lua LSP
-      -- lspconfig.lua_ls.setup {
-      --   on_attach = on_attach,
-      --   capabilities = capabilities,
-      --   settings = {
-      --     Lua = {
-      --       diagnostics = { globals = { 'vim' } },
-      --       workspace = { library = vim.api.nvim_get_runtime_file('', true) },
-      --     },
-      --   },
-      -- }
-
-
       lspconfig.lua_ls.setup {
         on_attach = on_attach,
         capabilities = capabilities,
@@ -187,12 +175,23 @@ return {
               disable = { 'missing-fields' },
               globals = { 'vim' }, -- Menambahkan "globals" seperti dalam konfigurasi sebelumnya
             },
-            -- format = {
-            --   enable = false,
-            -- },
           },
         },
       }
+
+      -- Configure C LSP
+      lspconfig.clangd.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = { 'clangd', '--background-index', '--clang-tidy' },
+        filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+        settings = {
+          clangd = {
+            fallbackFlags = { '-std=c++17' },
+          },
+        },
+      }
+
       -- Configure null-ls
       null_ls.setup {
         sources = {

@@ -1,5 +1,0 @@
-List of buttons that used in this nvim config
-- a
-- b 
-- c
--
