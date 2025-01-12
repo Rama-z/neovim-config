@@ -126,7 +126,7 @@ return {
       -- see `:h neo-tree-custom-commands-global`
       commands = {},
       window = {
-        position = 'left',
+        position = 'right',
         width = 40,
         mapping_options = {
           noremap = true,
@@ -308,7 +308,15 @@ return {
       },
     }
 
-    vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+    -- vim.cmd [[nnoremap \ :Neotree reveal<cr>]]
+    vim.keymap.set('n', '\\', function()
+      -- Cek apakah Neo-tree buffer sedang aktif
+      if vim.bo.filetype == 'neo-tree' then
+        vim.cmd('Neotree close')  -- Menutup Neo-tree jika sedang aktif
+      else
+        vim.cmd('Neotree reveal') -- Membuka Neo-tree dengan reveal
+      end
+    end, { noremap = true, silent = true, desc = 'Toggle Neo-tree' })
     vim.keymap.set('n', '<leader>e', ':Neotree toggle position=left<CR>', { noremap = true, silent = true }) -- focus file explorer
     vim.keymap.set('n', '<leader>ngs', ':Neotree float git_status<CR>', { noremap = true, silent = true })   -- open git status window
   end,
