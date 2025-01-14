@@ -11,8 +11,10 @@ return {
         themable = true,               -- allows highlight groups to be overriden i.e. sets highlights as default
         numbers = 'none',              -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
         close_command = 'Bdelete! %d', -- can be a string | function, see "Mouse actions"
-        buffer_close_icon = '✗',
-        close_icon = '✗',
+        -- buffer_close_icon = '✗',
+        -- close_icon = '✗',
+        buffer_close_icon = 'x',
+        close_icon = 'x',
         path_components = 1, -- Show only the file name without the directory
         modified_icon = '●',
         left_trunc_marker = '',
@@ -33,7 +35,7 @@ return {
         show_tab_indicators = false,
         indicator = {
           -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
-          style = 'none', -- Options: 'icon', 'underline', 'none'
+          style = 'icon', -- Options: 'icon', 'underline', 'none'
         },
         icon_pinned = '󰐃',
         minimum_padding = 1,
