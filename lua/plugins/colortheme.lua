@@ -1,28 +1,35 @@
 return {
-  'shaunsingh/nord.nvim',
+  'folke/tokyonight.nvim',
   lazy = false,
   priority = 1000,
   config = function()
-    -- Example config in lua
-    vim.g.nord_contrast = true
-    vim.g.nord_borders = false
-    vim.g.nord_disable_background = true
-    vim.g.nord_italic = false
-    vim.g.nord_uniform_diff_background = true
-    vim.g.nord_bold = false
+    -- Setup tema tokyonight
+    require('tokyonight').setup {
+      style = 'night',        -- Pilihan style: 'storm', 'moon', 'night', 'day'
+      transparent = true,     -- Membuat background transparan
+      terminal_colors = true, -- Warna terminal sesuai tema
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = true },
+        functions = { bold = true, italic = true },
+        variables = { bold = false },
+      },
+      sidebars = { 'qf', 'help' }, -- Sidebar dengan background gelap
+      dim_inactive = true,         -- Meredupkan jendela yang tidak aktif
+    }
 
-    -- Load the colorscheme
-    require('nord').set()
+    -- Terapkan tema
+    vim.cmd [[colorscheme tokyonight]]
 
-    -- Toggle background transparency
-    local bg_transparent = true
-
-    local toggle_transparency = function()
-      bg_transparent = not bg_transparent
-      vim.g.nord_disable_background = bg_transparent
-      vim.cmd [[colorscheme nord]]
-    end
-
-    vim.keymap.set('n', '<leader>bg', toggle_transparency, { noremap = true, silent = true })
+    -- Highlight tambahan untuk elemen kode
+    -- vim.api.nvim_set_hl(0, 'Comment', { fg = '#5f748c', italic = true }) -- Komentar
+    -- vim.api.nvim_set_hl(0, 'String', { fg = '#9ece6a' })                 -- String
+    -- vim.api.nvim_set_hl(0, 'Function', { fg = '#7aa2f7', bold = true })  -- Fungsi
+    -- vim.api.nvim_set_hl(0, 'Keyword', { fg = '#bb9af7', bold = true })   -- Kata kunci
+    -- vim.api.nvim_set_hl(0, 'Type', { fg = '#2ac3de', bold = true })      -- Tipe data
+    vim.api.nvim_set_hl(0, 'Number', { fg = '#ff9e64' })   -- Angka
+    vim.api.nvim_set_hl(0, 'Constant', { fg = '#ff75a0' }) -- Konstanta
+    -- vim.api.nvim_set_hl(0, 'Variable', { fg = '#e0af68' })               -- Variabel
+    vim.api.nvim_set_hl(0, 'Variable', { fg = 'white' })   -- Variabel
   end,
 }

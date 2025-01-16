@@ -1,5 +1,5 @@
-require 'core.options'  -- Load general options
-require 'core.keymaps'  -- Load general keymaps
+require 'core.options' -- Load general options
+require 'core.keymaps' -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -34,6 +34,7 @@ require('lazy').setup {
   require 'plugins.alpha',
   require 'plugins.comment',
   require 'plugins.misc',
+  require 'plugins.visual-multi',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`
