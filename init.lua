@@ -1,5 +1,5 @@
-require 'core.options' -- Load general options
-require 'core.keymaps' -- Load general keymaps
+require 'core.options'  -- Load general options
+require 'core.keymaps'  -- Load general keymaps
 require 'core.snippets' -- Custom code snippets
 
 -- Set up the Lazy plugin manager
@@ -27,7 +27,7 @@ require('lazy').setup {
   require 'plugins.none-ls',
   require 'plugins.supermaven',
 
-  require 'plugins.autoformatting',
+  -- require 'plugins.autoformatting',
   require 'plugins.indent-blankline',
   require 'plugins.toggleterm',
   require 'plugins.gitsigns',

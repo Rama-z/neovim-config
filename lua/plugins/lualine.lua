@@ -15,31 +15,6 @@ return {
       path = 0,           -- 0 = just filename, 1 = relative path, 2 = absolute path
     }
 
-    -- local fileformatname = {
-    --   'filename',
-    --   path = 0,           -- Menampilkan nama file dengan path relatif
-    --   file_status = true, -- Menampilkan status file
-    --   fmt = function(name)
-    --     -- Ubah label berdasarkan pola file
-    --     local patterns = {
-    --       ['hooks.ts$'] = function(dirname) return dirname .. ' - hooks' end,
-    --       ['index.tsx$'] = function(dirname) return dirname end,
-    --       ['helpers.tsx$'] = function(dirname) return dirname .. ' - help' end,
-    --       ['types.ts$'] = function(dirname) return dirname .. ' - types' end,
-    --       ['components/.*/index.tsx$'] = function(dirname) return dirname .. ' - component' end,
-    --     }
-    --
-    --     for pattern, format_fn in pairs(patterns) do
-    --       local dirname = vim.fn.fnamemodify(name, ':h:t') -- Ambil nama direktori
-    --       if name:match(pattern) then
-    --         return format_fn(dirname)
-    --       end
-    --     end
-    --
-    --     return name -- Default: tetap gunakan nama file asli
-    --   end,
-    -- }
-
     local hide_in_width = function()
       return vim.fn.winwidth(0) > 100
     end

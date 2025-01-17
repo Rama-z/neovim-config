@@ -5,14 +5,14 @@ return {
     config = function()
       require('toggleterm').setup {
         size = 20,                -- Ukuran terminal default (20 baris untuk horizontal split)
-        open_mapping = [[<C-n>]], -- Shortcut untuk membuka/menutup terminal
+        open_mapping = [[<C-p>]], -- Shortcut untuk membuka/menutup terminal
         direction = 'horizontal', -- Opsi: "horizontal", "vertical", "tab", atau "float"
         close_on_exit = true,     -- Tutup terminal otomatis saat shell selesai
         shell = vim.o.shell,      -- Shell yang digunakan
       }
       require('toggleterm').setup {
         size = 20,
-        open_mapping = [[<C-n>]],
+        open_mapping = [[<C-p>]],
         hide_numbers = true,    -- Sembunyikan nomor baris di terminal
         shade_filetypes = {},
         shade_terminals = true, -- Gelapkan terminal untuk membedakan dari buffer biasa
