@@ -1,5 +1,5 @@
 vim.wo.number = true                                 -- Make line numbers default (default: false)
-vim.o.relativenumber = true                          -- Set relative numbered lines (default: false)
+vim.o.relativenumber = false                         -- Set relative numbered lines (default: false)
 vim.o.clipboard = 'unnamedplus'                      -- Sync clipboard between OS and Neovim. (default: '')
 vim.o.wrap = false                                   -- Display lines as one long line (default: true)
 vim.o.linebreak = true                               -- Companion to wrap, don't split words (default: false)
@@ -19,7 +19,8 @@ vim.o.splitright = true                              -- Force all vertical split
 vim.o.hlsearch = false                               -- Set highlight on search (default: true)
 vim.o.showmode = false                               -- We don't need to see things like -- INSERT -- anymore (default: true)
 vim.opt.termguicolors = true                         -- Set termguicolors to enable highlight groups (default: false)
-vim.o.whichwrap = 'bs<>[]hl'                         -- Which "horizontal" keys are allowed to travel to prev/next line (default: 'b,s')
+vim.o.whichwrap =
+'bs<>[]hl'                                           -- Which "horizontal" keys are allowed to travel to prev/next line (default: 'b,s')
 vim.o.numberwidth = 4                                -- Set number column width to 2 {default 4} (default: 4)
 vim.o.swapfile = false                               -- Creates a swapfile (default: true)
 vim.o.smartindent = true                             -- Make indenting smarter again (default: false)
