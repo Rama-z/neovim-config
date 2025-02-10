@@ -34,7 +34,7 @@ require('lazy').setup {
   require 'plugins.alpha',
   require 'plugins.comment',
   require 'plugins.misc',
-  require 'plugins.visual-multi',
+  -- require 'plugins.visual-multi',
 }
 
 -- The line beneath this is called `modeline`. See `:help modeline`

@@ -46,6 +46,10 @@ return { -- Highlight, edit, and navigate code
     --   enable = true,          -- Aktifkan integrasi context commentstring
     --   enable_autocmd = false, -- Hindari autocmd yang tidak diinginkan
     -- },
+
+    fold = {
+      enable = true,
+    },
   },
   -- There are additional nvim-treesitter modules that you can use to interact
   -- with nvim-treesitter. You should go explore a few and see what interests you:

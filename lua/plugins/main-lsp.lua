@@ -79,6 +79,37 @@ return {
         end
       end
 
+      lspconfig.gopls.setup {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_dir = require('lspconfig').util.root_pattern('go.work', 'go.mod', '.git'),
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            usePlaceholders = true,
+            staticcheck = true,
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+            },
+            codelenses = {
+              generate = true,
+              gc_details = true,
+              test = true,
+              tidy = true,
+            },
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      }
       -- Configure CSS LSP
       lspconfig.cssls.setup {
         on_attach = on_attach,

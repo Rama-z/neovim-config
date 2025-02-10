@@ -22,6 +22,7 @@ vim.keymap.set('n', 'x', '"_x', opts)
 
 -- Vertical scroll and center
 vim.keymap.set('n', '<C-y>', '<C-d>zz', opts)
+vim.keymap.set('v', '<C-y>', '<C-d>', opts)
 vim.keymap.set('n', '<C-u>', '<C-u>zz', opts)
 
 -- Find and center
@@ -94,6 +95,9 @@ vim.keymap.set('n', '<C-d>', '<Nop>', opts)
 vim.keymap.set('n', '<C-p>', '<Nop>', opts)
 vim.keymap.set('n', '<C-n>', '<Nop>', opts)
 vim.keymap.set('n', '<C-a>', '<Nop>', opts)
+
+-- keymaps for folding
+vim.keymap.set('n', '<leader>z', 'za', opts)
 
 -- Shortcut untuk mengganti teks yang diseleksi
 -- vim.keymap.set('v', '<leader>sr', function()

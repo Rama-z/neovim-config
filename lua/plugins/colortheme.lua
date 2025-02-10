@@ -31,6 +31,9 @@ return {
     vim.api.nvim_set_hl(0, 'Constant', { fg = '#ff75a0' }) -- Konstanta
     -- vim.api.nvim_set_hl(0, 'Variable', { fg = '#e0af68' })               -- Variabel
     vim.api.nvim_set_hl(0, 'Variable', { fg = 'white' })   -- Variabel
+
     vim.api.nvim_set_hl(0, 'LineNr', { fg = '#2ac3de' })
+
+    vim.api.nvim_set_hl(0, 'LineNrRelative', { fg = 'pink' })
   end,
 }
