@@ -9,8 +9,8 @@ return {
 
       -- LSP Features
       { 'j-hui/fidget.nvim',       opts = {} }, -- Status updates
-      'hrsh7th/cmp-nvim-lsp',             -- Autocompletion source
-      'jose-elias-alvarez/null-ls.nvim',  -- Formatting and linting
+      'hrsh7th/cmp-nvim-lsp',                   -- Autocompletion source
+      'jose-elias-alvarez/null-ls.nvim',        -- Formatting and linting
 
       -- Additional Plugins
       'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
@@ -210,6 +210,23 @@ return {
         },
       }
 
+
+      -- Configure Svelte LSP
+      lspconfig.svelte.setup {
+        on_attach = function(client, bufnr)
+          on_attach(client, bufnr)
+
+          -- Optional: Auto-refresh Svelte files on save
+          vim.api.nvim_create_autocmd('BufWritePost', {
+            pattern = { '*.svelte' },
+            callback = function()
+              client.notify('$/onDidChangeWatchedFiles', { changes = {} })
+            end,
+          })
+        end,
+        capabilities = capabilities,
+      }
+
       -- Configure C LSP
       lspconfig.clangd.setup {
         on_attach = on_attach,
@@ -240,6 +257,7 @@ return {
               'json',
               'markdown',
               'yaml',
+              'svelte',
             },
           },
           null_ls.builtins.diagnostics.eslint,
@@ -260,7 +278,7 @@ return {
 
       -- Configure Treesitter
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { 'javascript', 'typescript', 'tsx', 'html', 'css', 'scss', 'json', 'lua' },
+        ensure_installed = { 'javascript', 'typescript', 'tsx', 'html', 'css', 'scss', 'json', 'lua', "svelte" },
         highlight = {
           enable = true,
         },
