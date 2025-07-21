@@ -13,12 +13,13 @@ return {
     require('mason-null-ls').setup {
       ensure_installed = {
         'svelte',
-        'prettier',  -- ts/js formatter
-        'stylua',    -- lua formatter
-        'eslint_d',  -- ts/js linter
-        'shfmt',     -- Shell formatter
-        'checkmake', -- Linter for Makefiles
-        'ruff',      -- Python linter and formatter
+        'prettier',        -- ts/js formatter
+        'stylua',          -- lua formatter
+        'eslint_d',        -- ts/js linter
+        'shfmt',           -- Shell formatter
+        'checkmake',       -- Linter for Makefiles
+        'ruff',            -- Python linter and formatter
+        'npm-groovy-lint', -- Groovy linter
       },
       automatic_installation = true,
     }
@@ -32,6 +33,10 @@ return {
       formatting.terraform_fmt,
       require('none-ls.formatting.ruff').with { extra_args = { '--extend-select', 'I' } },
       require 'none-ls.formatting.ruff_format',
+
+      formatting.npm_groovy_lint.with {
+        extra_args = { '--format' },
+      }
     }
 
     -- Setup null-ls

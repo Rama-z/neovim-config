@@ -210,6 +210,19 @@ return {
         },
       }
 
+      -- Groovy lsp config
+      lspconfig.groovyls.setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+        cmd = { 'groovy-language-server' },
+        filetypes = { 'groovy' },
+        root_dir = lspconfig.util.root_pattern('settings.gradle', '.git'),
+        settings = {
+          groovy = {
+            classpath = {}, -- Bisa disesuaikan jika ada kebutuhan classpath tertentu
+          },
+        },
+      }
 
       -- Configure Svelte LSP
       lspconfig.svelte.setup {

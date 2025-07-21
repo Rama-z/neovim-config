@@ -2,6 +2,10 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+vim.keymap.set('i', '<F1>', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set('v', '<F1>', '<Esc>', { noremap = true, silent = true })
+vim.keymap.set('n', '<F1>', '<Esc>', { noremap = true, silent = true })
+
 -- Disable the spacebar key's default behavior in Normal and Visual modes
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
