@@ -34,6 +34,7 @@ require('lazy').setup {
   require 'plugins.alpha',
   require 'plugins.comment',
   require 'plugins.misc',
+  require 'plugins.markdown',
   -- require 'plugins.visual-multi',
 }
 
