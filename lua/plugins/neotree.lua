@@ -312,9 +312,9 @@ return {
     vim.keymap.set('n', '\\', function()
       -- Cek apakah Neo-tree buffer sedang aktif
       if vim.bo.filetype == 'neo-tree' then
-        vim.cmd('Neotree close')  -- Menutup Neo-tree jika sedang aktif
+        vim.cmd 'Neotree close'  -- Menutup Neo-tree jika sedang aktif
       else
-        vim.cmd('Neotree reveal') -- Membuka Neo-tree dengan reveal
+        vim.cmd 'Neotree reveal' -- Membuka Neo-tree dengan reveal
       end
     end, { noremap = true, silent = true, desc = 'Toggle Neo-tree' })
     -- vim.keymap.set('n', '<leader>e', ':Neotree toggle position=left<CR>', { noremap = true, silent = true }) -- focus file explorer

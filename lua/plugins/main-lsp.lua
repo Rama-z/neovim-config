@@ -8,19 +8,20 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- LSP Features
-      { 'j-hui/fidget.nvim', opts = {} }, -- Status updates
-      'hrsh7th/cmp-nvim-lsp', -- Autocompletion source
-      'jose-elias-alvarez/null-ls.nvim', -- Formatting and linting
+      { 'j-hui/fidget.nvim',       opts = {} }, -- Status updates
+      'hrsh7th/cmp-nvim-lsp',             -- Autocompletion source
+      'jose-elias-alvarez/null-ls.nvim',  -- Formatting and linting
 
       -- Additional Plugins
       'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
-      'L3MON4D3/LuaSnip', -- Snippets engine
-      'hrsh7th/nvim-cmp', -- Autocompletion
-      'saadparwaiz1/cmp_luasnip', -- Snippets source
-      'windwp/nvim-ts-autotag', -- Auto close tags
-      'rafamadriz/friendly-snippets', -- Snippets collection
-      'onsails/lspkind.nvim', -- VSCode-like pictograms
+      'L3MON4D3/LuaSnip',                -- Snippets engine
+      'hrsh7th/nvim-cmp',                -- Autocompletion
+      'saadparwaiz1/cmp_luasnip',        -- Snippets source
+      'windwp/nvim-ts-autotag',          -- Auto close tags
+      'rafamadriz/friendly-snippets',    -- Snippets collection
+      'onsails/lspkind.nvim',            -- VSCode-like pictograms
     },
+
     config = function()
       local lspconfig = require 'lspconfig'
       local mason = require 'mason'
@@ -129,8 +130,8 @@ return {
             experimental = {
               classRegex = {
                 { 'cva\\(([^)]*)\\)', '["\'`]([^"\'`]*).*?["\'`]' },
-                { 'cx\\(([^)]*)\\)', "(?:'|\"|`)([^']*)(?:'|\"|`)" },
-                { 'tw\\`([^`]*)\\`', '([^`]*)' },
+                { 'cx\\(([^)]*)\\)',  "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+                { 'tw\\`([^`]*)\\`',  '([^`]*)' },
               },
             },
             validate = true,

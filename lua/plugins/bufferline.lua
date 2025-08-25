@@ -50,11 +50,21 @@ return {
 
           local name = vim.api.nvim_buf_get_name(buf_number) -- Ambil nama file berdasarkan nomor buffer
           local patterns = {
-            ['hooks.ts$'] = function(dirname) return dirname .. ' - hooks' end,
-            ['index.tsx$'] = function(dirname) return dirname end,
-            ['helpers.tsx$'] = function(dirname) return dirname .. ' - help' end,
-            ['types.ts$'] = function(dirname) return dirname .. ' - types' end,
-            ['components/.*/index.tsx$'] = function(dirname) return dirname .. ' - component' end,
+            ['hooks.ts$'] = function(dirname)
+              return dirname .. ' - hooks'
+            end,
+            ['index.tsx$'] = function(dirname)
+              return dirname
+            end,
+            ['helpers.tsx$'] = function(dirname)
+              return dirname .. ' - help'
+            end,
+            ['types.ts$'] = function(dirname)
+              return dirname .. ' - types'
+            end,
+            ['components/.*/index.tsx$'] = function(dirname)
+              return dirname .. ' - component'
+            end,
           }
 
           for pattern, format_fn in pairs(patterns) do

@@ -36,7 +36,7 @@ return {
 
       formatting.npm_groovy_lint.with {
         extra_args = { '--format' },
-      }
+      },
     }
 
     -- Setup null-ls
